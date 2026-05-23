@@ -3,15 +3,36 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+
+    <!-- Sun circle -->
     <path
         android:fillColor="#FF9800"
-        android:pathData="M54,20c-18.78,0 -34,15.22 -34,34s15.22,34 34,34 34,-15.22 34,-34 -15.22,-34 -34,-34zM54,78c-13.25,0 -24,-10.75 -24,-24s10.75,-24 24,-24 24,10.75 24,24 -10.75,24 -24,24z"/>
+        android:pathData="M54,34 a20,20 0 1,0 0.001,0 Z" />
+
+    <!-- Sun rays as paths -->
     <path
-        android:fillColor="#FFF176"
-        android:pathData="M54,36c-9.94,0 -18,8.06 -18,18s8.06,18 18,18 18,-8.06 18,-18 -8.06,-18 -18,-18z"/>
-    <!-- Sun rays -->
-    <rect android:fillColor="#FF9800" android:left="50" android:top="4" android:right="58" android:bottom="14" android:radius="4"/>
-    <rect android:fillColor="#FF9800" android:left="50" android:top="94" android:right="58" android:bottom="104" android:radius="4"/>
-    <rect android:fillColor="#FF9800" android:left="4" android:top="50" android:right="14" android:bottom="58" android:radius="4"/>
-    <rect android:fillColor="#FF9800" android:left="94" android:top="50" android:right="104" android:bottom="58" android:radius="4"/>
+        android:fillColor="#FF9800"
+        android:pathData="M54,8 L56,18 L52,18 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M54,90 L56,100 L52,100 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M8,54 L18,56 L18,52 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M90,54 L100,56 L100,52 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M22,22 L29,29 L26,32 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M82,76 L86,82 L80,86 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M22,86 L26,80 L29,83 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M82,22 L86,26 L80,29 Z" />
+
 </vector>
