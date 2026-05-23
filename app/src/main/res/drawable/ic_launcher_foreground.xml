@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M54,20c-18.78,0 -34,15.22 -34,34s15.22,34 34,34 34,-15.22 34,-34 -15.22,-34 -34,-34zM54,78c-13.25,0 -24,-10.75 -24,-24s10.75,-24 24,-24 24,10.75 24,24 -10.75,24 -24,24z"/>
+    <path
+        android:fillColor="#FFF176"
+        android:pathData="M54,36c-9.94,0 -18,8.06 -18,18s8.06,18 18,18 18,-8.06 18,-18 -8.06,-18 -18,-18z"/>
+    <!-- Sun rays -->
+    <rect android:fillColor="#FF9800" android:left="50" android:top="4" android:right="58" android:bottom="14" android:radius="4"/>
+    <rect android:fillColor="#FF9800" android:left="50" android:top="94" android:right="58" android:bottom="104" android:radius="4"/>
+    <rect android:fillColor="#FF9800" android:left="4" android:top="50" android:right="14" android:bottom="58" android:radius="4"/>
+    <rect android:fillColor="#FF9800" android:left="94" android:top="50" android:right="104" android:bottom="58" android:radius="4"/>
+</vector>

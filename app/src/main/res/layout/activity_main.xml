@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    tools:context=".MainActivity">
+
+    <!-- Status bar text (loading) -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/uv_purple"
+        android:gravity="center"
+        android:padding="6dp"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        tools:text="📡 Fetching UV data…" />
+
+    <!-- Pull-to-refresh wrapping the scroll view -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- ══════════════════════════════════════════════ -->
+                <!-- HERO HEADER CARD                               -->
+                <!-- ══════════════════════════════════════════════ -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/headerCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="#CC1A1A2E">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:paddingTop="40dp">
+
+                        <!-- App title + last refresh -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="☀ UV TRACKER"
+                                android:textColor="#FFFFFFFF"
+                                android:textSize="13sp"
+                                android:letterSpacing="0.15"
+                                android:fontFamily="sans-serif-medium" />
+
+                            <TextView
+                                android:id="@+id/tvLastRefresh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#99FFFFFF"
+                                android:textSize="11sp"
+                                tools:text="Updated 13:42:00" />
+                        </LinearLayout>
+
+                        <!-- Location -->
+                        <TextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:textColor="#FFFFFFFF"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium"
+                            tools:text="📍 Mumbai, IN" />
+
+                        <TextView
+                            android:id="@+id/tvCoords"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="#99FFFFFF"
+                            android:textSize="11sp"
+                            tools:text="19.0760°, 72.8777°" />
+
+                        <!-- Big UV index number -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="16dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvUVIndex"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#FFFFFFFF"
+                                    android:textSize="80sp"
+                                    android:fontFamily="sans-serif-thin"
+                                    android:lineSpacingMultiplier="0.9"
+                                    tools:text="8.3" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="UV INDEX"
+                                    android:textColor="#CCFFFFFF"
+                                    android:textSize="11sp"
+                                    android:letterSpacing="0.2" />
+                            </LinearLayout>
+
+                            <!-- Risk badge + arc progress -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal">
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:id="@+id/progressUVI"
+                                    android:layout_width="96dp"
+                                    android:layout_height="96dp"
+                                    android:progress="0"
+                                    app:indicatorSize="96dp"
+                                    app:trackThickness="8dp"
+                                    app:trackColor="#33FFFFFF"
+                                    app:indicatorColor="@color/uv_orange"
+                                    tools:progress="69" />
+
+                                <TextView
+                                    android:id="@+id/tvRiskLevel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:paddingHorizontal="16dp"
+                                    android:paddingVertical="4dp"
+                                    android:text="HIGH"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="12sp"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:letterSpacing="0.1"
+                                    android:background="@drawable/bg_risk_badge" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Burn time warning -->
+                        <TextView
+                            android:id="@+id/tvBurnTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:background="#33FFFFFF"
+                            android:padding="10dp"
+                            android:textColor="#FFFFFFFF"
+                            android:textSize="13sp"
+                            android:fontFamily="sans-serif-medium"
+                            tools:text="⏱  Unprotected Type II skin burns in ~23 min" />
+
+                        <!-- Recommendation -->
+                        <TextView
+                            android:id="@+id/tvRecommendation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#DDFFFFFF"
+                            android:textSize="13sp"
+                            tools:text="Cover up, use SPF 50+ sunscreen. Reduce time in the sun 10am–4pm." />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ══════════════════════════════════════════════ -->
+                <!-- UV BREAKDOWN CARD                             -->
+                <!-- ══════════════════════════════════════════════ -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="@color/surface_dark"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="UV RADIATION BREAKDOWN"
+                            android:textColor="#99FFFFFF"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.15"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <!-- Direct + Diffuse chips row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipDirectUV"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="6dp"
+                                android:text="☀ Direct: 5.20"
+                                app:chipBackgroundColor="#33FF9800"
+                                app:chipStrokeColor="#88FF9800"
+                                app:chipStrokeWidth="1dp"
+                                android:textColor="#FFFFFFFF"
+                                tools:text="☀ Direct: 5.20" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipDiffuseUV"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"
+                                android:text="🌤 Diffuse: 3.10"
+                                app:chipBackgroundColor="#334FC3F7"
+                                app:chipStrokeColor="#884FC3F7"
+                                app:chipStrokeWidth="1dp"
+                                android:textColor="#FFFFFFFF"
+                                tools:text="🌤 Diffuse: 3.10" />
+                        </LinearLayout>
+
+                        <!-- Clear sky + cloud row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/tvUVIClearSky"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="13sp"
+                                tools:text="Clear-sky max: 9.4" />
+
+                            <TextView
+                                android:id="@+id/tvCloudAttenuation"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="13sp"
+                                android:gravity="end"
+                                tools:text="Cloud cover: 18%" />
+                        </LinearLayout>
+
+                        <!-- Explanation text -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Direct UV arrives as a beam from the sun. Diffuse UV scatters from the sky in all directions — it reaches you even in shade. Reflected UV bounces off surfaces below (see environments)."
+                            android:textColor="#99FFFFFF"
+                            android:textSize="11sp"
+                            android:lineSpacingMultiplier="1.4" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ══════════════════════════════════════════════ -->
+                <!-- ENVIRONMENTS SECTION                          -->
+                <!-- ══════════════════════════════════════════════ -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="EXPOSURE BY ENVIRONMENT"
+                    android:textColor="#99FFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.15"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="How much UV actually reaches your skin in each setting, accounting for surface reflection, glass filtering, and geometry."
+                    android:textColor="#66FFFFFF"
+                    android:textSize="12sp"
+                    android:lineSpacingMultiplier="1.3" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEnvironments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="12dp"
+                    tools:listitem="@layout/item_environment"
+                    tools:itemCount="5" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Empty state -->
+    <LinearLayout
+        android:id="@+id/layoutEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="visible"
+        tools:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☀"
+            android:textSize="64sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="UV Tracker"
+            android:textColor="#FFFFFFFF"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/tvEmptyMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Fetching your location and UV data…"
+            android:textColor="#99FFFFFF"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.4" />
+    </LinearLayout>
+
+    <!-- Content layout reference (used in code to toggle visibility) -->
+    <View
+        android:id="@+id/layoutContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

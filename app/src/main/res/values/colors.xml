@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand / risk palette (WHO UV Index standard colors) -->
+    <color name="uv_green">#4CAF50</color>
+    <color name="uv_yellow">#FFEB3B</color>
+    <color name="uv_orange">#FF9800</color>
+    <color name="uv_red">#F44336</color>
+    <color name="uv_purple">#9C27B0</color>
+
+    <!-- Exposure type colors -->
+    <color name="exposure_amplified">#FF5722</color>
+    <color name="exposure_baseline">#FF9800</color>
+    <color name="exposure_reduced">#4CAF50</color>
+    <color name="exposure_minimal">#2196F3</color>
+    <color name="exposure_warning">#9C27B0</color>
+
+    <!-- Dark theme base -->
+    <color name="bg_dark">#0D1117</color>
+    <color name="surface_dark">#161B22</color>
+    <color name="surface_card">#1C2333</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8B949E</color>
+
+    <!-- Material You seeds -->
+    <color name="md_theme_primary">#BB86FC</color>
+    <color name="md_theme_secondary">#03DAC6</color>
+    <color name="md_theme_background">#121212</color>
+    <color name="md_theme_surface">#1E1E1E</color>
+    <color name="md_theme_on_primary">#000000</color>
+    <color name="md_theme_on_background">#E1E1E1</color>
+    <color name="md_theme_on_surface">#E1E1E1</color>
+    <color name="md_theme_error">#CF6679</color>
+
+    <!-- Notification / status -->
+    <color name="notification_color">#FF9800</color>
+</resources>

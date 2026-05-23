@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="#1A2B4A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Left accent bar -->
+        <View
+            android:id="@+id/viewAccent"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/uv_orange" />
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <!-- Row 1: icon + name + UVI value -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvIcon"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:gravity="center"
+                    android:textSize="22sp"
+                    tools:text="🏙️" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium"
+                        tools:text="Open Concrete / Pavement" />
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="11sp"
+                        android:lineSpacingMultiplier="1.3"
+                        tools:text="Reflective surface adds ~8% UV from concrete albedo." />
+                </LinearLayout>
+
+                <!-- Big UVI value -->
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/tvEffectiveUVI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="26sp"
+                        android:fontFamily="sans-serif-thin"
+                        android:gravity="center"
+                        tools:text="8.9" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UVI"
+                        android:textColor="#66FFFFFF"
+                        android:textSize="9sp"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Progress bar: percentage of base UV -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressUV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:trackCornerRadius="4dp"
+                    app:trackColor="#33FFFFFF"
+                    app:indicatorColor="@color/uv_orange"
+                    tools:progress="108" />
+
+                <TextView
+                    android:id="@+id/tvPercentage"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="11sp"
+                    android:gravity="end"
+                    android:fontFamily="sans-serif-medium"
+                    tools:text="108%" />
+            </LinearLayout>
+
+            <!-- UV Breakdown row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tvDirect"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="10sp"
+                    tools:text="☀ Direct: 4.81" />
+
+                <TextView
+                    android:id="@+id/tvDiffuse"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="10sp"
+                    tools:text="🌤 Diffuse: 3.48" />
+
+                <TextView
+                    android:id="@+id/tvReflected"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="10sp"
+                    tools:text="↩ Reflected: 0.66" />
+            </LinearLayout>
+
+            <!-- Reflection source label -->
+            <TextView
+                android:id="@+id/tvReflectionSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="#22FFFFFF"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:textColor="#88FFFFFF"
+                android:textSize="10sp"
+                android:visibility="gone"
+                tools:text="Concrete (~8 %)"
+                tools:visibility="visible" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="6dp"
+                android:background="#22FFFFFF" />
+
+            <!-- Burn time -->
+            <TextView
+                android:id="@+id/tvBurnTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#DDFFFFFF"
+                android:textSize="11sp"
+                tools:text="⏱ Burn in ~22 min (Type II skin)" />
+
+            <!-- Protection tip -->
+            <TextView
+                android:id="@+id/tvProtectionTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#99FFFFFF"
+                android:textSize="11sp"
+                android:lineSpacingMultiplier="1.3"
+                tools:text="💡 Urban environments feel cooler but UV is higher than grass. SPF 50+ recommended." />
+
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

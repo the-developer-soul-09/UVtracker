@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UV Tracker</string>
+    <string name="app_description">Real-time UV index with surface-specific exposure analysis</string>
+
+    <!-- Permissions -->
+    <string name="permission_location_title">Location Required</string>
+    <string name="permission_location_msg">UV Tracker uses your GPS location to fetch precise UV index data from the Open-Meteo weather API. UV levels vary significantly with latitude, altitude, and local cloud cover.</string>
+
+    <!-- UV Risk levels -->
+    <string name="risk_low">Low</string>
+    <string name="risk_moderate">Moderate</string>
+    <string name="risk_high">High</string>
+    <string name="risk_very_high">Very High</string>
+    <string name="risk_extreme">Extreme</string>
+
+    <!-- Data source -->
+    <string name="data_source">Data: Open-Meteo (ECMWF IFS model)</string>
+    <string name="data_attribution">UV index data provided by Open-Meteo.com under CC BY 4.0</string>
+
+    <!-- Loading / error states -->
+    <string name="loading">Fetching UV data…</string>
+    <string name="error_no_location">Could not obtain GPS location. Please enable Location Services.</string>
+    <string name="error_network">Network error. Check your internet connection.</string>
+    <string name="pull_to_refresh">Pull to refresh</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">UV Monitor</string>
+    <string name="notification_channel_desc">Live UV index monitoring in the background</string>
+    <string name="notification_title">UV Tracker Active</string>
+
+    <!-- Environment section -->
+    <string name="section_environments">Exposure by Environment</string>
+    <string name="section_environments_subtitle">How much UV actually reaches your skin in each setting</string>
+    <string name="section_breakdown">UV Radiation Breakdown</string>
+
+    <!-- Skin burn disclaimer -->
+    <string name="burn_disclaimer">Burn times are estimates for Fitzpatrick skin Type II (fair skin, blue/green eyes). Darker skin tones take significantly longer to burn but UV damage still accumulates. Always use SPF 30+ regardless of skin type.</string>
+</resources>

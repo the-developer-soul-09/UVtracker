@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!--
+       UV Tracker has no sensitive user data that needs backup.
+       The app only stores ephemeral UV readings from the network.
+    -->
+</full-backup-content>
